@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <button onclick="getLocation()"> Show Location</button>
+    <button onclick="getIp()"> Get-IP</button>
+    <h6 id="show"></h6>
+    <h6 id="getIp"></h6>
+
+
+    <script>
+        var showData = document.getElementById("show")
+        function getLocation() {
+            // console.log(navigator.geolocation);
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(myCoords);
+            } else {
+                showData.innerHTML = "Geolocation is not supported.";
+            }
+        }
+
+        function myCoords(position) {
+            showData.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        }
+
+        function getIp() {
+            $.getJSON("https://api.ipify.org?format=json", function (data) {
+
+                // Setting text of element h6 with id getIp
+                $("#getIp").html(data.ip);
+            })
+        }
+    </script>
+</body>
+</html>

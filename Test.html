@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="button-gallery">
+        <button value="red">Red</button>
+        <button value="blue">Blue</button>
+        <button value="green">Green</button>
+        <button value="black">Balck</button>
+    </div>
+
+    <script>
+        const buttongallery = document.getElementById("button-gallery");
+
+        const buttonGroupPressed = (e) => {
+            const isButton = e.target.nodeName === 'BUTTON';
+            document.body.style.backgroundColor = e.target.value;
+        }
+
+        buttongallery.addEventListener('click', buttonGroupPressed);
+    </script>
+</body>
+
+</html>
